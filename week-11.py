@@ -71,7 +71,23 @@ def bubble(dizi):
                 sayilar2[j], sayilar2[j+1] = sayilar2[j+1], sayilar2[j]
     return sayilar2,swap, kar
 def shellsort(dizi):
-    return 0
+    n = len(arr)
+    gap = int(n / 2)
+    karsilastirma_sayisi = 0
+    swap_sayisi = 0
+    while(gap > 0):
+        for i in range(gap,n):
+            karsilastirma_sayisi += 1
+            temp = arr[i]
+            j = i
+            while j >= gap and arr[j - gap] > temp:
+                swap_sayisi += 1
+                karsilastirma_sayisi += 1
+                arr[i] = arr[j - gap]
+                j -= gap
+            arr[j] = temp
+        gap = gap // 2
+    return arr,karsilastirma_sayisi,swap_sayisi
 def ortswapkar(deneme):
     swapinsert=[]
     swapbubble=[]
